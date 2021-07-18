@@ -8,15 +8,13 @@ from .models import  *
 class ChartView(APIView):
     authentication_classes = []
     permission_classes = []
-
     def get(self, request, format=None):
-        qs = Sales.objects.all()
-
+        query = Sales.objects.all()
         labels = []
         default_items = []
 
-        for item in qs:
-            labels.append(item.name)
+        for item in query:
+            labels.append(item.name_of_sales)
             default_items.append(item.profit)
 
         data = {
