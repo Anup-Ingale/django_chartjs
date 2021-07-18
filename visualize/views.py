@@ -1,8 +1,6 @@
 from django.shortcuts import render
-
 from .models import  *
 
-# Create your views here.
 
 def chartview(request):
     query = Sales.objects.all()
@@ -17,4 +15,4 @@ def chartview(request):
         "labels": labels,
         "datasets": default_items,
     }
-    return render(request,'visual.html',context=data)
+    return render(request,'visual.html', {'context': data})
